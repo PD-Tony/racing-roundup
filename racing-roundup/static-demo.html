@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racing Roundup - Static Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .article-card {
+            transition: transform 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold text-blue-600">Racing Roundup</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            F1 News
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            MotoGP News
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            About
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Menu icon -->
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-6 flex justify-between items-center">
+            <div class="flex space-x-4">
+                <button class="px-4 py-2 rounded-md bg-blue-600 text-white">
+                    All News
+                </button>
+                <button class="px-4 py-2 rounded-md bg-white">
+                    Formula 1
+                </button>
+                <button class="px-4 py-2 rounded-md bg-white">
+                    MotoGP
+                </button>
+            </div>
+            <div class="text-sm text-gray-500">
+                Last updated: 03/04/2025 00:30:00
+            </div>
+        </div>
+
+        <!-- Article Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="articles-container">
+            <!-- Articles will be loaded here via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-12 py-8 border-t">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Racing Roundup</h3>
+                    <p class="text-gray-600">Your source for the latest racing news, covering Formula 1, MotoGP, and more.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-600 hover:text-blue-800">Formula 1</a></li>
+                        <li><a href="#" class="text-blue-600 hover:text-blue-800">MotoGP</a></li>
+                        <li><a href="#" class="text-blue-600 hover:text-blue-800">Other Racing News</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-600 hover:text-blue-800">About Us</a></li>
+                        <li><a href="#" class="text-blue-600 hover:text-blue-800">Contact</a></li>
+                        <li><a href="#" class="text-blue-600 hover:text-blue-800">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-200 text-center">
+                <p class="text-gray-600">© 2025 Racing Roundup. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mock data for testing
+        const mockArticles = [
+            {
+                _id: '1',
+                title: 'Hamilton Secures Pole Position at British Grand Prix',
+                description: 'Lewis Hamilton delivered a stunning lap to secure pole position for the British Grand Prix, beating Max Verstappen by just 0.023 seconds in a thrilling qualifying session at Silverstone.',
+                link: 'https://example.com/f1/hamilton-pole-british-gp',
+                pubDate: new Date(2025, 3, 2, 15, 30, 0).toISOString(),
+                source: 'F1 News',
+                category: 'F1',
+                imageUrl: 'https://picsum.photos/800/450?random=1',
+            },
+            {
+                _id: '2',
+                title: 'Ferrari Unveils Major Upgrade Package for Italian Grand Prix',
+                description: 'Ferrari has unveiled a comprehensive upgrade package for their home race at Monza, featuring a redesigned floor, new rear wing, and modified sidepods aimed at improving downforce and reducing drag.',
+                link: 'https://example.com/f1/ferrari-upgrades-italian-gp',
+                pubDate: new Date(2025, 3, 2, 14, 15, 0).toISOString(),
+                source: 'Autosport',
+                category: 'F1',
+                imageUrl: 'https://picsum.photos/800/450?random=2',
+            },
+            {
+                _id: '3',
+                title: 'Bagnaia Dominates MotoGP Practice Sessions at Jerez',
+                description: 'Ducati rider Francesco Bagnaia dominated both practice sessions at the Spanish Grand Prix in Jerez, setting a new lap record and showing impressive race pace ahead of qualifying.',
+                link: 'https://example.com/motogp/bagnaia-dominates-jerez',
+                pubDate: new Date(2025, 3, 2, 13, 45, 0).toISOString(),
+                source: 'MotoGP.com',
+                category: 'MotoGP',
+                imageUrl: 'https://picsum.photos/800/450?random=3',
+            },
+            {
+                _id: '4',
+                title: 'Marc Marquez Signs Two-Year Contract Extension with Honda',
+                description: 'Six-time MotoGP champion Marc Marquez has signed a two-year contract extension with Repsol Honda, ending speculation about a potential move to Ducati for the 2026 season.',
+                link: 'https://example.com/motogp/marquez-honda-extension',
+                pubDate: new Date(2025, 3, 2, 12, 30, 0).toISOString(),
+                source: 'Crash.net',
+                category: 'MotoGP',
+                imageUrl: 'https://picsum.photos/800/450?random=4',
+            },
+            {
+                _id: '5',
+                title: 'Red Bull Racing Announces New Technical Partnership',
+                description: 'Red Bull Racing has announced a new technical partnership with a leading aerospace company, bringing cutting-edge materials and aerodynamic expertise to their Formula 1 operation.',
+                link: 'https://example.com/f1/red-bull-technical-partnership',
+                pubDate: new Date(2025, 3, 2, 11, 15, 0).toISOString(),
+                source: 'Formula1.com',
+                category: 'F1',
+                imageUrl: 'https://picsum.photos/800/450?random=5',
+            },
+            {
+                _id: '6',
+                title: 'Quartararo Frustrated with Yamaha Development Pace',
+                description: 'Former MotoGP champion Fabio Quartararo has expressed frustration with the pace of Yamaha\'s development, claiming the 2025 bike has not made the progress needed to challenge for race wins.',
+                link: 'https://example.com/motogp/quartararo-yamaha-frustration',
+                pubDate: new Date(2025, 3, 2, 10, 0, 0).toISOString(),
+                source: 'MCN',
+                category: 'MotoGP',
+                imageUrl: 'https://picsum.photos/800/450?random=6',
+            }
+        ];
+
+        // Format date function
+        function formatDate(dateString) {
+            try {
+                const date = new Date(dateString);
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = date.getFullYear();
+                const hours = String(date.getHours()).padStart(2, '0');
+                const minutes = String(date.getMinutes()).padStart(2, '0');
+                const seconds = String(date.getSeconds()).padStart(2, '0');
+                return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+            } catch (error) {
+                return dateString;
+            }
+        }
+
+        // Render articles
+        function renderArticles(articles) {
+            const container = document.getElementById('articles-container');
+            container.innerHTML = '';
+
+            articles.forEach(article => {
+                const articleCard = document.createElement('div');
+                articleCard.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 article-card';
+                
+                let imageHtml = '';
+                if (article.imageUrl) {
+                    imageHtml = `
+                        <div class="h-48 overflow-hidden relative">
+                            <img 
+                                src="${article.imageUrl}" 
+                                alt="${article.title}"
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                    `;
+                }
+
+                const categoryClass = article.category === 'F1' 
+                    ? 'bg-red-100 text-red-800' 
+                    : article.category === 'MotoGP' 
+                        ? 'bg-blue-100 text-blue-800' 
+                        : 'bg-gray-100 text-gray-800';
+
+                articleCard.innerHTML = `
+                    ${imageHtml}
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-semibold px-2 py-1 rounded ${categoryClass}">
+                                ${article.category}
+                            </span>
+                            <span class="text-xs text-gray-500">${formatDate(article.pubDate)}</span>
+                        </div>
+                        <h2 class="text-xl font-semibold mb-2">${article.title}</h2>
+                        <p class="text-gray-600 mb-4 line-clamp-3">${article.description}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Source: ${article.source}</span>
+                            <a 
+                                href="${article.link}" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="text-blue-600 hover:text-blue-800 font-medium"
+                                aria-label="Read more about ${article.title}"
+                            >
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(articleCard);
+            });
+        }
+
+        // Filter buttons functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial render
+            renderArticles(mockArticles);
+
+            // Get filter buttons
+            const allButton = document.querySelector('button:nth-child(1)');
+            const f1Button = document.querySelector('button:nth-child(2)');
+            const motoGPButton = document.querySelector('button:nth-child(3)');
+
+            // Add event listeners
+            allButton.addEventListener('click', () => {
+                setActiveButton(allButton);
+                renderArticles(mockArticles);
+            });
+
+            f1Button.addEventListener('click', () => {
+                setActiveButton(f1Button);
+                const filteredArticles = mockArticles.filter(article => 
+                    article.category.toLowerCase() === 'f1'
+                );
+                renderArticles(filteredArticles);
+            });
+
+            motoGPButton.addEventListener('click', () => {
+                setActiveButton(motoGPButton);
+                const filteredArticles = mockArticles.filter(article => 
+                    article.category.toLowerCase() === 'motogp'
+                );
+                renderArticles(filteredArticles);
+            });
+
+            function setActiveButton(activeButton) {
+                // Reset all buttons
+                [allButton, f1Button, motoGPButton].forEach(button => {
+                    button.classList.remove('bg-blue-600', 'bg-red-600', 'text-white');
+                    button.classList.add('bg-white');
+                });
+                
+                // Set active button
+                activeButton.classList.remove('bg-white');
+                if (activeButton === f1Button) {
+                    activeButton.classList.add('bg-red-600', 'text-white');
+                } else {
+                    activeButton.classList.add('bg-blue-600', 'text-white');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
